@@ -1,0 +1,40 @@
+@import 'globals.scss';
+@import 'normalize.scss';
+@import 'variables.scss';
+
+* {
+    box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    font-size: 10px;
+    position: relative;
+    width: 100%;
+    scroll-behavior: smooth;
+   
+    @include fromMediumLarge {
+      /**
+       * From tablet breakpoint on, the whole project starts to get proportional.
+       * The following calculation is used to make sure that the font sizes set on designs match
+       * the artboard size. This way we can use easy to convert numbers as 8.8rem for 88px on
+       * a 1440px width screen.
+       */
+      font-size: (1000vw / 1440);
+    }
+  }
+  
+  // router-outlet ~ * {
+  //   height: 100%;
+  //   // position: absolute;
+  //   width: 100%;
+  // }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  :focus {
+    outline-color: transparentize($color: $color-blue-link, $amount: 0.3);
+  }
+  

@@ -1,0 +1,13 @@
+@import '../assets/styles/includes.scss';
+
+.d-flex {
+    @include d-flex;
+  
+    .footer {
+      color: $color-brand;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: $font-roboto;
+    }
+  }
+  
