@@ -1,3 +1,107 @@
-<p>
-  modal works!
-</p>
+<ng-container *ngIf="modalEditar">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="abrirModalEditar()">X</span>
+      <h1 class="titulo">Resumo da Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <label class="linha-titulo">Terapia</label>
+        <input class="linha-descricao" value="{{terapiaModal.terapia}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Terapia</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_terapia}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor Pago</label>
+        <input class="linha-descricao" value="{{converterMoeda(terapiaModal.valor_pago)}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Solicitação</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_solicitacao}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data do Pagamento</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_pagamento}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor do Reembolso</label>
+        <input class="linha-descricao" value="{{converterMoeda(terapiaModal.valor_reembolso)}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Protocolo</label>
+        <input class="linha-descricao" value="{{terapiaModal.protocolo}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Reembolso</label>
+        <input class="linha-descricao" value="{{terapiaModal.n_reembolso}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Recibo/NF</label>
+        <input class="linha-descricao" value="{{terapiaModal.recibo_nf}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Status</label>
+        <input class="linha-descricao" value="{{terapiaModal.status}}">
+      </div>
+      <div class="linha">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="modalNovaTerapia">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="abrirModalEditar()">X</span>
+      <h1 class="titulo">Resumo da Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <label class="linha-titulo">Terapia</label>
+        <input class="linha-descricao" value="{{terapiaModal.terapia}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Terapia</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_terapia}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor Pago</label>
+        <input class="linha-descricao" value="{{converterMoeda(terapiaModal.valor_pago)}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Solicitação</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_solicitacao}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data do Pagamento</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_pagamento}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor do Reembolso</label>
+        <input class="linha-descricao" value="{{converterMoeda(terapiaModal.valor_reembolso)}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Protocolo</label>
+        <input class="linha-descricao" value="{{terapiaModal.protocolo}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Reembolso</label>
+        <input class="linha-descricao" value="{{terapiaModal.n_reembolso}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Recibo/NF</label>
+        <input class="linha-descricao" value="{{terapiaModal.recibo_nf}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Status</label>
+        <input class="linha-descricao" value="{{terapiaModal.status}}">
+      </div>
+      <div class="linha">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -5,7 +5,7 @@
   </div>
   <div class="box">
     <div class="box-btn">
-      <a class="nova-terapia"><p>Nova Terapia</p></a>
+      <a class="nova-terapia" (click)="modal.abrirModalNova()"><p>Nova Terapia</p></a>
     </div>
     <div class="box-pesquisa">
       <img class="lupa" src="../../../assets/imagens/lupa.png">
@@ -35,7 +35,7 @@
             <p class="coluna-descricao">{{item.data_pagamento}}</p>
           </div>
           <div class="coluna">
-            <a class="coluna-btn">Editar</a>
+            <a class="coluna-btn" (click)="modal.abrirModalEditar(item)">Editar</a>
           </div>      
         </div>
       </ng-container>
@@ -44,4 +44,5 @@
   <div class="footer">
     <p class="footer-texto">Desenvolvido por Dallara Tecnology</p>
   </div>
+  <app-modal id="modal"  #modal></app-modal>
 </div>

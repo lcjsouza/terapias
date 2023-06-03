@@ -1,0 +1,78 @@
+@import '../../../assets/styles/includes.scss';
+
+.modal {
+  z-index: 1;
+  position: relative;
+  margin: 3rem 2rem;
+  padding: 1.5rem 1rem;
+  background-color: $color-white;
+  border: 1px solid #c0c0c0;
+  border-radius: 2rem;
+  font-family: $font-roboto;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    .fechar {
+      font-weight: 400;
+      font-size: 2.2rem;
+      line-height: 2.2rem;
+      width: 100%;
+      text-align: end;
+      margin-right: 1.5rem;
+    }
+
+    .titulo {
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  &-corpo {
+    display: flex;
+    flex-direction: column;
+
+    .linha {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+
+      &-titulo {
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        margin-bottom: 0.5rem;
+      }
+      &-descricao {
+        background: #ffffff;
+        border: 1px solid #c0c0c0;
+        border-radius: 1rem;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        padding: 0.8rem 1rem;
+      }
+
+      &-btn {
+        background: $color-terapia;
+        border-radius: 1rem;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        color: $color-white;
+        height: 3rem;
+        width: 22rem;
+        text-align: center;
+        padding: 0.7rem 0;
+      }
+    }
+
+    .linha:last-child {
+      align-items: center;
+    }
+  }
+}

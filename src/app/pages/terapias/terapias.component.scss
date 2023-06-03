@@ -178,4 +178,10 @@
       font-family: $font-roboto;
     }
   }
+
+  #modal{
+    display: none;
+    grid-area: 1/1/30/16;
+    background: rgba(0, 0, 0, 0.7);
+  }
 }
