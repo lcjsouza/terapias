@@ -1,6 +1,47 @@
-<div>
-  <img src="../assets/imagens/Img-Autismo.jpeg">
-  <div class="d-flex">
-    <p class="footer">Desenvolvido por Dallara Tecnology</p>
+<div class="root">
+  <div class="aba">
+    <a class="aba-tabela"><p>Tabela</p></a>
+    <a class="aba-grafico"><p>Gráfico</p></a>
+  </div>
+  <div class="box">
+    <div class="box-btn">
+      <a class="nova-terapia"><p>Nova Terapia</p></a>
+    </div>
+    <div class="box-pesquisa">
+      <img class="lupa" src="../../../assets/imagens/lupa.png">
+      <input class="pesquisa" placeholder="Buscar por terapia" />
+    </div>
+    <div class="box-tabela">
+      <ng-container *ngFor="let item of listaTerapias">
+        <div class="box-tabela-info">
+          <div class="coluna">
+            <label class="coluna-titulo">Terapia</label>
+            <p class="coluna-descricao">{{item.terapia}}</p>
+          </div>
+          <div class="coluna">
+            <label class="coluna-titulo">Data da Terapia</label>
+            <p class="coluna-descricao">{{item.data_terapia}}</p>
+          </div>
+          <div class="coluna">
+            <label class="coluna-titulo">Valor Pago</label>
+            <p class="coluna-descricao">{{converterMoeda(item.valor_pago)}}</p>
+          </div>
+          <div class="coluna">
+            <label class="coluna-titulo">Valor do Reembolso</label>
+            <p class="coluna-descricao">{{converterMoeda(item.valor_reembolso)}}</p>
+          </div>      
+          <div class="coluna">
+            <label class="coluna-titulo">Data do Pagamento</label>
+            <p class="coluna-descricao">{{item.data_pagamento}}</p>
+          </div>
+          <div class="coluna">
+            <a class="coluna-btn">Editar</a>
+          </div>      
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="footer-texto">Desenvolvido por Dallara Tecnology</p>
   </div>
 </div>

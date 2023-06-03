@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './pages/header/header.module';
 import { FooterModule } from './pages/footer/footer.module';
+import { TerapiasModule } from './pages/terapias/terapias.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FooterModule } from './pages/footer/footer.module';
     AppRoutingModule,
     HeaderModule,
     FooterModule,
+    TerapiasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
