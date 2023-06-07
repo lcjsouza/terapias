@@ -6,15 +6,50 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./terapias.component.scss'],
 })
 export class TerapiasComponent implements OnInit {
+  pesquisaFeita = '';
+  arrayTerapias: Array<any> = [];
+  abaTabela: boolean = true;
+  abaGrafico: boolean = false;
 
   constructor() {}
 
-  ngOnInit() {    
+  ngOnInit() {   
+    this.arrayTerapias = this.listaTerapias;
   }
 
-  converterMoeda(valor: any){
-    return valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+  mostrarTabela(){
+    this.abaTabela = true;
+    this.abaGrafico = false;
   }
+  
+  mostrarGrafico(){
+    this.abaTabela = false;
+    this.abaGrafico = true;
+  }
+
+  converterMoeda(valor: any, locale = 'pt-BR', currency = 'BRL') {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency
+    }).format(valor)
+  }
+
+  campoBusca(event: any){
+    this.pesquisaFeita = event.target.value;   
+    this.filtroGeral();
+  }
+
+  filtroGeral() {
+    this.listaTerapias = this.arrayTerapias.filter(filtro =>
+      (filtro.terapia.toLowerCase().includes(this.pesquisaFeita.toLowerCase()))
+      ||
+      (filtro.status.toLowerCase().includes(this.pesquisaFeita.toLowerCase()))
+    )
+  }
+
+  // isNotEmpty(value: any) {
+  //   return value !== undefined && value !== null;
+  // }
 
   listaTerapias = [
     {

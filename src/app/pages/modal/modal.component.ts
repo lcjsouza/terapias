@@ -14,12 +14,13 @@ export class ModalComponent implements OnInit {
   constructor(private terapiaComponent: TerapiasComponent) { }
 
   ngOnInit() {
+
   }
 
-  abrirModalEditar(terapia?: any){  
+  ModalEditar(terapia?: any){  
     const modal: any = document.getElementById('modal');
     this.terapiaModal = terapia;
-     
+
     if (modal.style.display === 'block'){
       modal.style.display = 'none';
     }else {
@@ -28,10 +29,9 @@ export class ModalComponent implements OnInit {
     this.modalEditar = !this.modalEditar
   }
 
-  abrirModalNova(){  
+  ModalNova(){  
     const modal: any = document.getElementById('modal');
-    console.log('teste');
-    
+   
     if (modal.style.display === 'block'){
       modal.style.display = 'none';
     }else {
@@ -40,8 +40,20 @@ export class ModalComponent implements OnInit {
     this.modalNovaTerapia = !this.modalNovaTerapia
   }
 
-  converterMoeda(valor: any){
-    return this.terapiaComponent.converterMoeda(valor);
+  converterValores(event: any){
+    return this.terapiaComponent.converterMoeda(event)
   }
+
+  mascaraMoeda(event: any) {
+    const onlyDigits = event.target.value
+      .split("")
+      .filter((s: string) => /\d/.test(s))
+      .join("")
+      .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = this.terapiaComponent.converterMoeda(digitsFloat)
+  }
+  
+
 
 }

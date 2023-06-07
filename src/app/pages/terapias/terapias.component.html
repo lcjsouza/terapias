@@ -1,15 +1,16 @@
 <div class="root">
   <div class="aba">
-    <a class="aba-tabela"><p>Tabela</p></a>
-    <a class="aba-grafico"><p>Gráfico</p></a>
+    <a class="aba-tabela" (click)="mostrarTabela()"><p>Tabela</p></a>
+    <a class="aba-grafico" (click)="mostrarGrafico()"><p>Gráfico</p></a>
   </div>
-  <div class="box">
+  <!-- Opção Tabela -->
+  <div *ngIf="abaTabela" class="box">
     <div class="box-btn">
-      <a class="nova-terapia" (click)="modal.abrirModalNova()"><p>Nova Terapia</p></a>
+      <a class="nova-terapia" (click)="modal.ModalNova()"><p>Nova Terapia</p></a>
     </div>
     <div class="box-pesquisa">
       <img class="lupa" src="../../../assets/imagens/lupa.png">
-      <input class="pesquisa" placeholder="Buscar por terapia" />
+      <input class="pesquisa" placeholder="Buscar por terapia" (keyup)="campoBusca($event)" type="text"/>
     </div>
     <div class="box-tabela">
       <ng-container *ngFor="let item of listaTerapias">
@@ -35,11 +36,15 @@
             <p class="coluna-descricao">{{item.data_pagamento}}</p>
           </div>
           <div class="coluna">
-            <a class="coluna-btn" (click)="modal.abrirModalEditar(item)">Editar</a>
+            <a class="coluna-btn" (click)="modal.ModalEditar(item)">Editar</a>
           </div>      
         </div>
       </ng-container>
     </div>
+  </div>
+  <!-- Opção Gráfico -->
+  <div *ngIf="abaGrafico" class="box">
+    <canvas></canvas>
   </div>
   <div class="footer">
     <p class="footer-texto">Desenvolvido por Dallara Tecnology</p>
