@@ -21,10 +21,10 @@ export class ModalComponent implements OnInit {
     const modal: any = document.getElementById('modal');
     this.terapiaModal = terapia;
 
-    if (modal.style.display === 'block'){
+    if (modal.style.display === 'flex'){
       modal.style.display = 'none';
     }else {
-      modal.style.display = 'block';
+      modal.style.display = 'flex';
     }
     this.modalEditar = !this.modalEditar
   }
@@ -32,10 +32,10 @@ export class ModalComponent implements OnInit {
   ModalNova(){  
     const modal: any = document.getElementById('modal');
    
-    if (modal.style.display === 'block'){
+    if (modal.style.display === 'flex'){
       modal.style.display = 'none';
     }else {
-      modal.style.display = 'block';
+      modal.style.display = 'flex';
     }
     this.modalNovaTerapia = !this.modalNovaTerapia
   }

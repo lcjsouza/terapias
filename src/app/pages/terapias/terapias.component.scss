@@ -6,6 +6,10 @@
   background-image: url('./../../../assets/imagens/Img-Autismo.jpeg');
   background-size: cover;
   background-position-x: -7.5rem;
+  
+  @include fromMediumLarge{
+    background-position-x: 0;
+  }
 
   .aba {
     grid-area: 1/2/2/16;
@@ -162,6 +166,22 @@
       }
 
     }
+
+    @include fromMediumLarge{
+      grid-area: 2/2/29/32;
+
+      &-pesquisa {
+        width: auto;
+
+        .lupa{
+          grid-area: 1/5/1/6;
+        }
+
+        .pesquisa{
+          grid-area: 1/1/2/6;
+        }
+      }
+    }
   }
 
   .footer {
@@ -181,8 +201,15 @@
 
   #modal{
     display: none;
+    justify-content: center;
+    align-items: center;
     grid-area: 1/1/30/16;
     background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+
+    @include fromMediumLarge {
+      grid-area: 1/1/30/33;
+    }
   }
 }
 

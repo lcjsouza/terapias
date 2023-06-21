@@ -1,6 +1,7 @@
 @import '../../../assets/styles/includes.scss';
 
 .modal {
+  width: 100%;
   z-index: 1;
   position: relative;
   margin: 3rem 2rem;
@@ -97,5 +98,10 @@
     .linha:last-child {
       align-items: center;
     }
+  }
+
+  @include fromMediumLarge{
+    height: 60rem;
+    width: 124rem;
   }
 }

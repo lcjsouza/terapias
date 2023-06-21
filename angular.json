@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/includes.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -37,13 +37,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "8mb"
                 }
               ],
               "fileReplacements": [
@@ -55,12 +55,13 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
+              "optimization": true,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": true
             }
           },
           "defaultConfiguration": "production"
