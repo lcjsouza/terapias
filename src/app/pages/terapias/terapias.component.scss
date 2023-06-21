@@ -5,13 +5,9 @@
   font-family: $font-roboto;
   background-image: url('./../../../assets/imagens/Img-Autismo.jpeg');
   background-size: cover;
-  background-position-x: -7.5rem;
-  
-  @include fromMediumLarge{
-    background-position-x: 0;
-  }
+  background-position-x: -7.5rem;  
 
-  .aba {
+  .aba-mobile {
     grid-area: 1/2/2/16;
     display: flex;
     align-items: flex-end;
@@ -44,6 +40,7 @@
   }
 
   .box {
+    height: 100vh;
     grid-area: 2/2/29/15;
     @include d-flex;
     flex-direction: column;
@@ -53,46 +50,74 @@
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     border-radius: 0px 10px 10px 10px;
 
-    &-btn {
+    .header-btn {
       display: flex;
       justify-content: flex-end;
       margin: 2rem 1rem 0 0;
 
-      .nova-terapia {
+      .aba-desktop {
+        display: none;
+      }
+
+      .btn-novo {
         background: $color-terapia;
         border-radius: 1rem;
-        font-weight: 500;
-        font-size: 1.6rem;
-        line-height: 1.9rem;
-        color: $color-white;
-        width: 13rem;
-        padding: 1rem 1.8rem;
+        display: flex;
+
+        .nova-terapia {
+          font-weight: 500;
+          font-size: 1.6rem;
+          line-height: 1.9rem;
+          color: $color-white;
+          width: 13rem;
+          padding: 1rem 1.8rem;
+        }
       }
     }
 
-    &-pesquisa {
-      @include grid();
-      margin: 3rem 1.4rem 2rem;
-      width: auto;
+    &-filtros {
+      display: flex;
+      flex-direction: column;
 
-      .lupa {
-        grid-area: 1/14/1/16;
-        z-index: 1;
-        margin: auto;
-        width: 2.4rem;
-        height: 2.4rem;
+      &-pesquisa {
+        @include grid();
+        margin: 3rem 1.4rem 2rem;
+        width: auto;
+
+        .lupa {
+          grid-area: 1/14/1/16;
+          z-index: 1;
+          margin: auto;
+          width: 2.4rem;
+          height: 2.4rem;
+        }
+
+        .pesquisa {
+          grid-area: 1/1/2/16;
+          box-sizing: border-box;
+          width: 100%;
+          height: 4rem;
+          border: 1px solid rgba(3, 40, 121, 0.7);
+          border-radius: 10px;
+          padding-left: 1rem;
+          font-size: 1.6rem;
+        }
       }
 
-      .pesquisa {
-        grid-area: 1/1/2/16;
-        box-sizing: border-box;
-        width: 100%;
-        height: 4rem;
-        background: #eaedf3;
-        border: 1px solid rgba(3, 40, 121, 0.7);
-        border-radius: 10px;
-        padding-left: 1rem;
-        font-size: 1.6rem;
+      &-reembolso {
+        margin: 0rem 1.4rem 2rem;
+        width: auto;
+
+        select {
+          box-sizing: border-box;
+          width: 100%;
+          height: 4rem;
+          border: 1px solid rgba(3, 40, 121, 0.7);
+          border-radius: 10px;
+          padding-left: 1rem;
+          font-size: 1.6rem;
+          cursor: pointer;
+        }
       }
     }
 
@@ -100,7 +125,6 @@
       @include d-flex;
       align-items: center;
       flex-direction: column;
-      height: 65rem;
       overflow-y: auto;
 
       &-info {
@@ -147,39 +171,22 @@
           }
         }
 
-        .coluna:nth-child(3){
+        .coluna:nth-child(3) {
           margin: 2rem 0;
         }
 
-        .coluna:nth-child(6){
+        .coluna:nth-child(6) {
           display: flex;
           justify-content: center;
         }
       }
 
-      &-info:first-child{
+      &-info:first-child {
         margin: 0 1rem;
       }
 
-      &-info:last-child{
+      &-info:last-child {
         margin: 2.5rem 1rem;
-      }
-
-    }
-
-    @include fromMediumLarge{
-      grid-area: 2/2/29/32;
-
-      &-pesquisa {
-        width: auto;
-
-        .lupa{
-          grid-area: 1/5/1/6;
-        }
-
-        .pesquisa{
-          grid-area: 1/1/2/6;
-        }
       }
     }
   }
@@ -199,7 +206,7 @@
     }
   }
 
-  #modal{
+  #modal {
     display: none;
     justify-content: center;
     align-items: center;
@@ -211,12 +218,71 @@
       grid-area: 1/1/30/33;
     }
   }
+
+  @include fromMediumLarge {
+    background-position-x: 0;
+
+    .aba-mobile {
+      display: none;
+    }   
+
+    .box {
+      grid-area: 2/2/29/32;
+      margin-top: 3rem;
+      border-radius: 10px;
+
+      .header-btn {
+        justify-content: space-between;
+        margin: 4rem 4rem;
+
+        .aba-desktop {
+          display: flex;
+        }
+
+        .btn-novo{
+          border: 1px solid $color-terapia;
+          background: transparent;
+          
+          .nova-terapia {
+            text-align: center;
+            font-size: 2rem;
+            line-height: 2.3rem;
+            color: $color-terapia;
+            width: 22rem;
+          }
+        }
+      }
+
+      &-filtro {
+        flex-direction: row;
+        align-items: center;
+
+        &-pesquisa {
+          width: 30rem;
+          margin: 0 2rem 2rem 4rem;
+
+          .lupa {
+            grid-area: 1/31/1/32;
+          }
+
+          .pesquisa {
+            grid-area: 1/1/2/33;
+          }
+        }
+
+        &-reembolso {
+          width: 30rem;
+          margin: 0 2rem 2rem 4rem;
+        }
+      }
+    }
+  }
 }
 
-#tabela{
+#tabela {
   display: block;
 }
 
-#grafico{
+#grafico {
   display: none;
 }
