@@ -6,15 +6,27 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./terapias.component.scss'],
 })
 export class TerapiasComponent implements OnInit {
-  pesquisaFeita = '';
+  valorBusca = '';
+  nomeTerapia = '';
   arrayTerapias: Array<any> = [];
+  listaNomeTerapia: Array<any> = [];
   abaTabela: boolean = true;
   abaGrafico: boolean = false;
+  tamanhoDisplay = window.screen.width;
+  tabelaMobile: boolean = false;
+  tabelaDesktop: boolean = false;
 
   constructor() {}
 
   ngOnInit() {   
+    this.tamanhoDisplay >= 992 ? this.tabelaDesktop = true : this.tabelaMobile = true;
+    
     this.arrayTerapias = this.listaTerapias;
+    this.listaTerapias.forEach((x) => {
+      if(!this.listaNomeTerapia.find((y) => y == x.terapia)) {
+        this.listaNomeTerapia.push(x.terapia);
+      }
+    })   
   }
 
   mostrarTabela(){
@@ -35,21 +47,29 @@ export class TerapiasComponent implements OnInit {
   }
 
   campoBusca(event: any){
-    this.pesquisaFeita = event.target.value;   
+    this.valorBusca = event.target.value;   
+    this.filtroGeral();
+  }
+
+  filtroTerapia(event: any){
+    this.nomeTerapia = event.target.value;      
     this.filtroGeral();
   }
 
   filtroGeral() {
     this.listaTerapias = this.arrayTerapias.filter(filtro =>
-      (filtro.terapia.toLowerCase().includes(this.pesquisaFeita.toLowerCase()))
+      ((filtro.protocolo.includes(this.valorBusca))
       ||
-      (filtro.status.toLowerCase().includes(this.pesquisaFeita.toLowerCase()))
+      (filtro.n_reembolso.includes(this.valorBusca)))
+      &&
+      this.isNotEmpty(this.nomeTerapia) && this.isNotEmpty(filtro.terapia) &&
+      filtro.terapia.toLowerCase().includes(this.nomeTerapia.toLowerCase())
     )
   }
 
-  // isNotEmpty(value: any) {
-  //   return value !== undefined && value !== null;
-  // }
+  isNotEmpty(value: any) {
+    return value !== undefined && value !== null;
+  }
 
   listaTerapias = [
     {
