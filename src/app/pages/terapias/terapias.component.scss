@@ -1,0 +1,222 @@
+@import '../../../assets/styles/includes.scss';
+
+.root {
+  @include grid();
+  font-family: $font-roboto;
+  background-image: url('./../../../assets/imagens/Img-Autismo.jpeg');
+  background-size: cover;
+  background-position-x: -7.5rem;
+  
+  @include fromMediumLarge{
+    background-position-x: 0;
+  }
+
+  .aba {
+    grid-area: 1/2/2/16;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    margin-top: 2rem;
+
+    &-tabela {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 8rem;
+      height: 3rem;
+      background: $color-terapia;
+      border-radius: 1rem 1rem 0px 0px;
+      color: $color-white;
+    }
+
+    &-grafico {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 8rem;
+      height: 3rem;
+      border: 1px solid #c0c0c0;
+      border-radius: 1rem 1rem 0px 0px;
+      color: $color-terapia;
+    }
+  }
+
+  .box {
+    grid-area: 2/2/29/15;
+    @include d-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #c0c0c0;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 10px 10px;
+
+    &-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin: 2rem 1rem 0 0;
+
+      .nova-terapia {
+        background: $color-terapia;
+        border-radius: 1rem;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: $color-white;
+        width: 13rem;
+        padding: 1rem 1.8rem;
+      }
+    }
+
+    &-pesquisa {
+      @include grid();
+      margin: 3rem 1.4rem 2rem;
+      width: auto;
+
+      .lupa {
+        grid-area: 1/14/1/16;
+        z-index: 1;
+        margin: auto;
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+
+      .pesquisa {
+        grid-area: 1/1/2/16;
+        box-sizing: border-box;
+        width: 100%;
+        height: 4rem;
+        background: #eaedf3;
+        border: 1px solid rgba(3, 40, 121, 0.7);
+        border-radius: 10px;
+        padding-left: 1rem;
+        font-size: 1.6rem;
+      }
+    }
+
+    &-tabela {
+      @include d-flex;
+      align-items: center;
+      flex-direction: column;
+      height: 65rem;
+      overflow-y: auto;
+
+      &-info {
+        height: 18rem;
+        background: rgba(196, 196, 196, 0.1);
+        border: 1px solid rgba(3, 40, 121, 0.7);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 2rem;
+        @include d-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 2.5rem 1rem 0;
+        padding: 1.5rem;
+
+        .coluna {
+          width: 12.5rem;
+
+          &-titulo {
+            font-size: 1.2rem;
+            line-height: 1.4rem;
+            font-weight: 500;
+          }
+
+          &-descricao {
+            font-weight: 700;
+            font-size: 1.6rem;
+            line-height: 2.1rem;
+            white-space: pre;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          &-btn {
+            width: 100%;
+            padding: 0.7rem 0;
+            background: #032879;
+            border-radius: 1rem;
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+            color: $color-white;
+            text-align: center;
+          }
+        }
+
+        .coluna:nth-child(3){
+          margin: 2rem 0;
+        }
+
+        .coluna:nth-child(6){
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      &-info:first-child{
+        margin: 0 1rem;
+      }
+
+      &-info:last-child{
+        margin: 2.5rem 1rem;
+      }
+
+    }
+
+    @include fromMediumLarge{
+      grid-area: 2/2/29/32;
+
+      &-pesquisa {
+        width: auto;
+
+        .lupa{
+          grid-area: 1/5/1/6;
+        }
+
+        .pesquisa{
+          grid-area: 1/1/2/6;
+        }
+      }
+    }
+  }
+
+  .footer {
+    grid-area: 29/1/30/16;
+    height: 5.5rem;
+    @include d-flex;
+    justify-content: center;
+    align-items: center;
+
+    &-texto {
+      color: $color-white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: $font-roboto;
+    }
+  }
+
+  #modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1/1/30/16;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+
+    @include fromMediumLarge {
+      grid-area: 1/1/30/33;
+    }
+  }
+}
+
+#tabela{
+  display: block;
+}
+
+#grafico{
+  display: none;
+}

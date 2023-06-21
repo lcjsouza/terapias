@@ -1,0 +1,129 @@
+<ng-container *ngIf="modalEditar">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="ModalEditar()">X</span>
+      <h1 class="titulo">Resumo da Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <label class="linha-titulo">Terapia</label>
+        <select disabled>
+          <option [value]="terapiaModal.terapia">{{terapiaModal.terapia}}</option>
+        </select>
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Terapia</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_terapia}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor Pago</label>
+        <input class="linha-descricao" value="{{converterValores(terapiaModal.valor_pago)}}" (keyup)="mascaraMoeda($event)" type="text" maxlength="9">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Solicitação</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_solicitacao}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data do Pagamento</label>
+        <input class="linha-descricao" value="{{terapiaModal.data_pagamento}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor do Reembolso</label>
+        <input class="linha-descricao" value="{{converterValores(terapiaModal.valor_reembolso)}}" (keyup)="mascaraMoeda($event)" type="text" maxlength="9">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Protocolo</label>
+        <input class="linha-descricao" value="{{terapiaModal.protocolo}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Reembolso</label>
+        <input class="linha-descricao" value="{{terapiaModal.n_reembolso}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Recibo/NF</label>
+        <input class="linha-descricao" value="{{terapiaModal.recibo_nf}}">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Status</label>
+        <select>
+          <option hidden [value]="terapiaModal.status">{{terapiaModal.status}}</option>
+          <option value="recebido">Recebido</option>
+          <option value="pendente">Pendente</option>
+          <option value="liberado">Liberado</option>
+          <option value="nao-enviado">Não enviado</option>
+        </select>
+      </div>
+      <div class="linha">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="modalNovaTerapia">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="ModalNova()">X</span>
+      <h1 class="titulo">Resumo da Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <label class="linha-titulo">Terapia</label>
+        <select>
+          <option value="" selected hidden>Selecione...</option>
+          <option value="fonoaudiologia">Fonoaudiologia</option>
+          <option value="psicopedagogia">Psicopedagogia</option>
+          <option value="psicologia">Psicologia</option>
+          <option value="terapia-ocupacional">Terapia Ocupacional</option>
+          <option value="nutricionista">Nutricionista</option>
+          <option value="musicoterapia">Musicoterapia</option>
+        </select>
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Terapia</label>
+        <input class="linha-descricao" type="date" >
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Valor Pago</label>
+        <input id="valor-pago" class="linha-descricao" maxlength="9" (keyup)="mascaraMoeda($event)" type="text" placeholder="R$ 0,00">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data da Solicitação</label>
+        <input class="linha-descricao" type="date">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Data do Pagamento</label>
+        <input class="linha-descricao" type="date">
+      </div>
+      <div class="linha">
+        <label id="valor-reembolso" class="linha-titulo" >Valor do Reembolso</label>
+        <input class="linha-descricao" maxlength="9" (keyup)="mascaraMoeda($event)" placeholder="R$ 0,00" type="text">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Protocolo</label>
+        <input class="linha-descricao" max="20" type="number" placeholder="00000000000000000000">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Reembolso</label>
+        <input class="linha-descricao" max="10" type="number" placeholder="0000000000">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Nº Recibo/NF</label>
+        <input class="linha-descricao" max="5" type="number" placeholder="00000">
+      </div>
+      <div class="linha">
+        <label class="linha-titulo">Status</label>
+        <select>
+          <option value="" selected hidden>Selecione...</option>
+          <option value="recebido">Recebido</option>
+          <option value="pendente">Pendente</option>
+          <option value="liberado">Liberado</option>
+          <option value="nao-enviado">Não enviado</option>
+        </select>
+      </div>
+      <div class="linha">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,75 @@
+/* COLORS  */
+$color-terapia: #032879;
+$color-brand: #002855;
+$color-white: #ffffff;
+$color-off-white: #f9f9f9;
+$color-less-white: rgba(255, 255, 255, 0.8);
+$color-black: #000000;
+$color-grey: #666666;
+$color-grey-lighter: #f5f5f5;
+$color-grey-light: #e5e5e5;
+$color-grey-medium: #c7c9c7;
+$color-grey-bright: #58595B;
+$color-grey-matterhorn: #4B4B4B;
+$color-green: #28c18d;
+$color-green-light: #5fa548;
+$color-red: #d23b3b;
+$color-yellow: #f9cc54;
+$color-blue: #2771ef;
+$color-blue-prev: #1B3157;
+$color-blue-medium: #426ca9;
+$color-blue-dark: #2268da;
+$color-blue-navy: #0a1a3c;
+$color-blue-light: #ebf0f8;
+$color-blue-link: #3171ef;
+$color-blue-link-hover: #2d61c3;
+$color-black-modal: rgba(0, 0, 0, 0.5);
+$color-filters: rgba(27, 49, 87, 0.1);
+
+/* New separator colors based on the style guide */
+$color-separator-dark: rgba($color-black, 0.1);
+$color-separator-light: rgba($color-white, 0.2);
+
+/* FONT FAMILY */
+$font-sans-serif: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$font-serif: 'Freight', 'Georgia', serif;
+$font-roboto: 'Roboto';
+
+/* FONT WEIGHT  */
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 600;
+$font-bold: 700;
+
+/* GRID SYSTEM */
+$grid-columns-desktop: 32;
+$grid-columns-mobile: 15;
+
+/* TRANSITIONS */
+$duration-short: 0.2s;
+$duration-medium: 0.3s;
+$duration-long: 0.5s;
+$duration-longer: 0.8s;
+$bottom-transition: bottom $duration-long ease;
+$ease-default: cubic-bezier(0.25, 0.1, 0.25, 0.1);
+$ease-in-out: cubic-bezier(0.51, 0.31, 0, 1.01);
+
+/* BREAKPOINTS */
+$bp-small: 370px;
+$bp-medium: 768px;
+$bp-medium-large: 992px;
+$bp-large: 1260px;
+$bp-4K: 1900px;
+
+/* Z-INDEX */
+$z-index-negative-1: -1;
+$z-index-1: 10;
+$z-index-2: 20;
+$z-index-3: 30;
+$z-index-4: 40;
+$z-index-5: 50;
+$z-index-6: 60;
+
+/* GLOBALS */
+$header-height-small: 7.6rem;
+$header-accessibility-height: 3.2rem;
