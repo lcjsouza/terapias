@@ -38,7 +38,7 @@
         </select>
       </div>
     </div>
-    <div class="box-tabela">
+    <div *ngIf="tabelaMobile" class="box-tabela">
       <ng-container *ngFor="let item of listaTerapias">
         <div class="box-tabela-info">
           <div class="coluna">
@@ -70,6 +70,35 @@
           </div>
         </div>
       </ng-container>
+    </div>
+    <div *ngIf="tabelaDesktop" class="tabela-terapias">
+      <div class="tabela-atividades">
+        <table class="table tabela-info">
+          <thead>
+            <tr>
+              <th>Terapia</th>
+              <th>Data da Terapia</th>
+              <th>Valor Pago</th>
+              <th>Valor do Reembolso</th>
+              <th>Data do Pagamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let terapia of listaTerapias">
+              <tr>
+                <td>{{terapia.terapia}}</td>
+                <td>{{terapia.data_terapia}}</td>
+                <td>{{terapia.valor_pago}}</td>
+                <td>{{terapia.valor_reembolso}}</td>
+                <td>{{terapia.data_pagamento}}</td>
+                <td (click)="modal.ModalEditar(terapia)">
+                  <img src="../../../assets/img/editar-jogador.svg" alt="Editar">
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <!-- Opção Gráfico -->

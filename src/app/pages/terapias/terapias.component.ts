@@ -12,10 +12,15 @@ export class TerapiasComponent implements OnInit {
   listaNomeTerapia: Array<any> = [];
   abaTabela: boolean = true;
   abaGrafico: boolean = false;
+  tamanhoDisplay = window.screen.width;
+  tabelaMobile: boolean = false;
+  tabelaDesktop: boolean = false;
 
   constructor() {}
 
   ngOnInit() {   
+    this.tamanhoDisplay >= 992 ? this.tabelaDesktop = true : this.tabelaMobile = true;
+    
     this.arrayTerapias = this.listaTerapias;
     this.listaTerapias.forEach((x) => {
       if(!this.listaNomeTerapia.find((y) => y == x.terapia)) {

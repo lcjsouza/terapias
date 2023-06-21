@@ -5,7 +5,7 @@
   font-family: $font-roboto;
   background-image: url('./../../../assets/imagens/Img-Autismo.jpeg');
   background-size: cover;
-  background-position-x: -7.5rem;  
+  background-position-x: -7.5rem;
 
   .aba-mobile {
     grid-area: 1/2/2/16;
@@ -224,7 +224,7 @@
 
     .aba-mobile {
       display: none;
-    }   
+    }
 
     .box {
       grid-area: 2/2/29/32;
@@ -237,12 +237,35 @@
 
         .aba-desktop {
           display: flex;
+          justify-content: space-between;
+          width: 27rem;
+          font-weight: 500;
+          font-size: 2rem;
+          line-height: 2.3rem;
+          text-align: center;
+
+          &-tabela {
+            color: $color-white;
+            background: $color-terapia;
+            border-radius: 1rem;
+            padding: 1rem 0;
+            width: 13rem;
+          }
+
+          &-grafico {
+            color: $color-terapia;
+            background: transparent;
+            border: 1px solid $color-terapia;
+            border-radius: 1rem;
+            padding: 1rem 0;
+            width: 13rem;
+          }
         }
 
-        .btn-novo{
+        .btn-novo {
           border: 1px solid $color-terapia;
           background: transparent;
-          
+
           .nova-terapia {
             text-align: center;
             font-size: 2rem;
@@ -253,13 +276,14 @@
         }
       }
 
-      &-filtro {
+      &-filtros {
         flex-direction: row;
         align-items: center;
+        margin: 0 4rem 2rem 4rem;
 
         &-pesquisa {
           width: 30rem;
-          margin: 0 2rem 2rem 4rem;
+          margin: 0;
 
           .lupa {
             grid-area: 1/31/1/32;
@@ -272,8 +296,15 @@
 
         &-reembolso {
           width: 30rem;
-          margin: 0 2rem 2rem 4rem;
+          margin: 0 2rem;
         }
+      }
+
+      .tabela-terapias {
+        margin: 0 2rem;
+        border: 1px solid rgba(3, 40, 121, 0.7);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 2rem;
       }
     }
   }
