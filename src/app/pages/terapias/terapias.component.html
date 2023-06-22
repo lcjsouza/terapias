@@ -1,14 +1,18 @@
 <div class="root">
   <div class="aba-mobile">
-    <a class="aba-mobile-tabela" (click)="mostrarTabela()"><p>Tabela</p></a>
+    <a class="aba-mobile-tabela active" (click)="mostrarTabela()"><p>Tabela</p></a>
     <a class="aba-mobile-grafico" (click)="mostrarGrafico()"><p>Gráfico</p></a>
   </div>
   <!-- Opção Tabela -->
   <div *ngIf="abaTabela" class="box">
     <div class="header-btn">
       <div class="aba-desktop">
-        <a class="aba-desktop-tabela" (click)="mostrarTabela()"><p>Tabela</p></a>
-        <a class="aba-desktop-grafico" (click)="mostrarGrafico()"><p>Gráfico</p></a>
+        <a class="aba-desktop-tabela active" (click)="mostrarTabela()">
+          <p>Tabela</p>
+        </a>
+        <a class="aba-desktop-grafico" (click)="mostrarGrafico()">
+          <p>Gráfico</p>
+        </a>
       </div>
       <div class="btn-novo">
         <a class="nova-terapia" (click)="modal.ModalNova()">
@@ -71,38 +75,64 @@
         </div>
       </ng-container>
     </div>
-    <div *ngIf="tabelaDesktop" class="tabela-terapias">
-      <div class="tabela-atividades">
-        <table class="table tabela-info">
-          <thead>
+    <div *ngIf="tabelaDesktop" class="tabela-desktop">
+      <table class="tabela-terapias">
+        <thead>
+          <tr>
+            <th (click)="ordenarTerapia('terapia')">Terapia <img class="icon-sort" src="../../../assets/imagens/seta-ordenacao.png" alt=""></th>
+            <th>Data da Terapia</th>
+            <th>Valor Pago</th>
+            <th>Valor do Reembolso</th>
+            <th>Data do Pagamento</th>
+            <th (click)="ordenarTerapia('status')">Status <img class="icon-sort" src="../../../assets/imagens/seta-ordenacao.png" alt=""></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let terapia of listaTerapias | paginate: { itemsPerPage: contador, currentPage: paginaAtual}">
             <tr>
-              <th>Terapia</th>
-              <th>Data da Terapia</th>
-              <th>Valor Pago</th>
-              <th>Valor do Reembolso</th>
-              <th>Data do Pagamento</th>
+              <td>{{ terapia.terapia }}</td>
+              <td>{{ terapia.data_terapia }}</td>
+              <td>{{ converterMoeda(terapia.valor_pago) }}</td>
+              <td>{{ converterMoeda(terapia.valor_reembolso) }}</td>
+              <td>{{ terapia.data_pagamento }}</td>
+              <td
+                [class.color-recebido]="terapia.status == 'Recebido'"
+                [class.color-pendente]="terapia.status == 'Pendente'"
+                [class.color-liberado]="terapia.status == 'Liberado'"
+              >
+                {{ terapia.status }}
+              </td>
+              <td (click)="modal.ModalEditar(terapia)">
+                <img
+                  src="../../../assets/imagens/editar-jogador.svg"
+                  alt="Editar"
+                />
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngFor="let terapia of listaTerapias">
-              <tr>
-                <td>{{terapia.terapia}}</td>
-                <td>{{terapia.data_terapia}}</td>
-                <td>{{terapia.valor_pago}}</td>
-                <td>{{terapia.valor_reembolso}}</td>
-                <td>{{terapia.data_pagamento}}</td>
-                <td (click)="modal.ModalEditar(terapia)">
-                  <img src="../../../assets/img/editar-jogador.svg" alt="Editar">
-                </td>
-              </tr>
-            </ng-container>
-          </tbody>
-        </table>
-      </div>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center mt-3">
+      <pagination-controls class="my-pagination" 
+      (pageChange)="paginaAtual = $event" 
+      previousLabel="" nextLabel=""
+        [maxSize]="maxSize" [autoHide]="true">
+      </pagination-controls>
     </div>
   </div>
   <!-- Opção Gráfico -->
   <div *ngIf="abaGrafico" class="box">
+    <div class="header-btn">
+      <div class="aba-desktop">
+        <a class="aba-desktop-tabela" (click)="mostrarTabela()">
+          <p>Tabela</p>
+        </a>
+        <a class="aba-desktop-grafico active" (click)="mostrarGrafico()">
+          <p>Gráfico</p>
+        </a>
+      </div>
+    </div>
     <canvas></canvas>
   </div>
   <div class="footer">
