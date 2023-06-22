@@ -15,6 +15,11 @@ export class TerapiasComponent implements OnInit {
   tamanhoDisplay = window.screen.width;
   tabelaMobile: boolean = false;
   tabelaDesktop: boolean = false;
+  ordemTerapias = false;
+  // Variáveis para Paginação
+  paginaAtual : number = 1 ;
+  contador : number = 10;
+  maxSize : number = 5;
 
   constructor() {}
 
@@ -32,11 +37,15 @@ export class TerapiasComponent implements OnInit {
   mostrarTabela(){
     this.abaTabela = true;
     this.abaGrafico = false;
+    document.querySelector('.aba-mobile-tabela')?.classList.add('active')
+    document.querySelector('.aba-mobile-grafico')?.classList.remove('active')
   }
   
   mostrarGrafico(){
     this.abaTabela = false;
     this.abaGrafico = true;
+    document.querySelector('.aba-mobile-tabela')?.classList.remove('active')
+    document.querySelector('.aba-mobile-grafico')?.classList.add('active')
   }
 
   converterMoeda(valor: any, locale = 'pt-BR', currency = 'BRL') {
@@ -71,6 +80,17 @@ export class TerapiasComponent implements OnInit {
     return value !== undefined && value !== null;
   }
 
+  ordenarTerapia(tipo: string) {
+    if (this.ordemTerapias) {
+      if(tipo === 'terapia') this.listaTerapias.sort((a, b) => a.terapia.localeCompare(b.terapia));
+      if(tipo === 'status') this.listaTerapias.sort((a, b) => a.status.localeCompare(b.status));
+    } else {
+      if(tipo === 'terapia') this.listaTerapias.sort((a, b) => b.terapia.localeCompare(a.terapia));
+      if(tipo === 'status') this.listaTerapias.sort((a, b) => b.status.localeCompare(a.status));
+    }
+    this.ordemTerapias = !this.ordemTerapias;
+  }
+
   listaTerapias = [
     {
       terapia: 'Fonoaudiologia',
@@ -95,7 +115,7 @@ export class TerapiasComponent implements OnInit {
       valor_reembolso: 109.62,
       protocolo: '32630520220608045720',
       n_reembolso: '3891330863',
-      status: 'Recebido',
+      status: 'Liberado',
       acertado: 'Sim',
     },
     {
@@ -134,7 +154,7 @@ export class TerapiasComponent implements OnInit {
       valor_reembolso: 222.44,
       protocolo: '32630520221006100315',
       n_reembolso: '4038049373',
-      status: 'Recebido',
+      status: 'Pendente',
       acertado: 'Sim',
     },
     {
