@@ -29,7 +29,7 @@
       </div>
       <div class="coluna">
         <label class="coluna-titulo">Data da Terapia</label>
-        <p class="coluna-descricao">{{ item.data_terapia }}</p>
+        <p class="coluna-descricao">{{ item.data_terapia | date : 'dd/MM/yyyy' }}</p>
       </div>
       <div class="coluna">
         <label class="coluna-titulo">Valor Pago</label>
@@ -45,7 +45,7 @@
       </div>
       <div class="coluna">
         <label class="coluna-titulo">Data do Pagamento</label>
-        <p class="coluna-descricao">{{ item.data_pagamento }}</p>
+        <p class="coluna-descricao">{{ item.data_pagamento | date : 'dd/MM/yyyy'  }}</p>
       </div>
       <div class="coluna">
         <a class="coluna-btn" (click)="modalTabela.infoModal('editar', item)">Editar</a>
@@ -69,10 +69,10 @@
       <ng-container *ngFor="let terapia of arrayTerapias | paginate: { itemsPerPage: contador, currentPage: paginaAtual}">
         <tr>
           <td>{{ terapia.terapia }}</td>
-          <td>{{ terapia.data_terapia }}</td>
+          <td>{{ terapia.data_terapia | date : 'dd/MM/yyyy'  }}</td>
           <td>{{ converterMoeda(terapia.valor_pago) }}</td>
           <td>{{ converterMoeda(terapia.valor_reembolso) }}</td>
-          <td>{{ terapia.data_pagamento }}</td>
+          <td>{{ terapia.data_pagamento | date : 'dd/MM/yyyy'  }}</td>
           <td
             [class.color-recebido]="terapia.status == 'Recebido'"
             [class.color-pendente]="terapia.status == 'Pendente'"

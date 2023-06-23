@@ -7,12 +7,14 @@
     </div>
     <div class="modal-corpo">
       <div class="linha">
+        <!-- Terapia -->
         <div class="linha-info">
           <label class="titulo">Terapia</label>
           <select disabled>
             <option [value]="terapiaModal.terapia">{{terapiaModal.terapia}}</option>
           </select>
         </div>
+        <!-- Status -->
         <div class="linha-info linha-px2">
           <label class="titulo">Status</label>
           <select>
@@ -23,40 +25,48 @@
             <option value="nao-enviado">Não enviado</option>
           </select>
         </div>
+        <!-- Data da Solicitação -->
         <div class="linha-info">
           <label class="titulo">Data da Solicitação</label>
-          <input class="descricao" value="{{terapiaModal.data_solicitacao}}">
+          <input class="descricao" value="{{terapiaModal.data_solicitacao | date : 'dd/MM/yyyy' }}">
         </div>
       </div>
       <div class="linha">
+        <!-- Data da Terapia -->
         <div class="linha-info linha-pr2">
           <label class="titulo">Data da Terapia</label>
-          <input class="descricao " value="{{terapiaModal.data_terapia}}">
+          <input class="descricao " value="{{terapiaModal.data_terapia | date : 'dd/MM/yyyy' }}">
         </div>
+        <!-- Valor Pago -->
         <div class="linha-info">
           <label class="titulo">Valor Pago</label>
           <input id="valor-pago" class="descricao" maxlength="9" value="{{converterValores(terapiaModal.valor_pago)}}" (keyup)="mascaraMoeda($event)" type="text" placeholder="R$ 0,00">
         </div>
       </div>
       <div class="linha">
+        <!-- Nº do Recibo -->
         <div class="linha-info">
           <label class="titulo">Nº Recibo/NF</label>
           <input class="descricao" max="5" type="number" value="{{terapiaModal.recibo_nf}}">
         </div>
+        <!-- Valor do Reembolso -->
         <div class="linha-info linha-px2">
           <label id="valor-reembolso" class="titulo" >Valor do Reembolso</label>
           <input class="descricao" maxlength="9" value="{{converterValores(terapiaModal.valor_reembolso)}}" (keyup)="mascaraMoeda($event)" placeholder="R$ 0,00" type="text">
         </div>
+        <!-- Data do Pagamento -->
         <div class="linha-info">
           <label class="titulo">Data do Pagamento</label>
-          <input class="descricao" value="{{terapiaModal.data_pagamento}}">
+          <input class="descricao" value="{{terapiaModal.data_pagamento | date : 'dd/MM/yyyy' }}">
         </div>
       </div>
       <div class="linha">
+        <!-- Protocolo -->
         <div class="linha-info linha-pr2">
           <label class="titulo">Protocolo</label>
           <input class="descricao" max="20" type="number" value="{{terapiaModal.protocolo}}">
         </div>
+        <!-- Nº do reembolso -->
         <div class="linha-info">
           <label class="titulo">Nº Reembolso</label>
           <input class="descricao" max="10" type="number" value="{{terapiaModal.n_reembolso}}">
@@ -78,6 +88,7 @@
     </div>
     <div class="modal-corpo">
       <div class="linha">
+        <!-- Terapia -->
         <div class="linha-info">
           <label class="titulo">Terapia</label>
           <select>
@@ -90,6 +101,7 @@
             <option value="musicoterapia">Musicoterapia</option>
           </select>
         </div>
+        <!-- Status -->
         <div class="linha-info linha-px2">
           <label class="titulo">Status</label>
           <select>
@@ -100,6 +112,7 @@
             <option value="nao-enviado">Não enviado</option>
           </select>
         </div>
+        <!-- Data da Solicitação -->
         <div class="linha-info">
           <label class="titulo">Data da Solicitação</label>
           <input class="descricao" type="date">
@@ -141,7 +154,7 @@
       </div>
       
       <div class="linha-info">
-        <a class="linha-btn">Editar</a>
+        <a class="linha-btn" (click)="salvarTerapia()">Salvar</a>
       </div>
     </div>
   </div>

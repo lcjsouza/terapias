@@ -23,4 +23,12 @@ export class TerapiaService {
   getListaTerapias(): Observable<any> {
     return this.httpClient.get<any>(this.API, { headers: this.headers })
   }
+
+  criarTerapia(terapia: any): Observable<any> {
+    return this.httpClient.post<any>(this.API, terapia, { headers: this.headers })
+  }
+
+  editarTerapia(terapia: any): Observable<any> {
+    return this.httpClient.put<any>(this.API, terapia, { headers: this.headers })
+  }
 }
