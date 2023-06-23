@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'app-terapias',
@@ -6,44 +6,24 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./terapias.component.scss'],
 })
 export class TerapiasComponent implements OnInit {
-  valorBusca = '';
-  nomeTerapia = '';
-  arrayTerapias: Array<any> = [];
-  listaNomeTerapia: Array<any> = [];
-  abaTabela: boolean = true;
-  abaGrafico: boolean = false;
-  tamanhoDisplay = window.screen.width;
-  tabelaMobile: boolean = false;
-  tabelaDesktop: boolean = false;
-  ordemTerapias = false;
-  // Variáveis para Paginação
-  paginaAtual : number = 1 ;
-  contador : number = 10;
-  maxSize : number = 5;
+  abaTabela: boolean = true
+  abaGrafico: boolean = false
+  arrayModal: any;
 
   constructor() {}
 
-  ngOnInit() {   
-    this.tamanhoDisplay >= 992 ? this.tabelaDesktop = true : this.tabelaMobile = true;
-    
-    this.arrayTerapias = this.listaTerapias;
-    this.listaTerapias.forEach((x) => {
-      if(!this.listaNomeTerapia.find((y) => y == x.terapia)) {
-        this.listaNomeTerapia.push(x.terapia);
-      }
-    })   
-  }
+  ngOnInit() {}
 
-  mostrarTabela(){
-    this.abaTabela = true;
-    this.abaGrafico = false;
+  mostrarTabela() {
+    this.abaTabela = true
+    this.abaGrafico = false
     document.querySelector('.aba-mobile-tabela')?.classList.add('active')
     document.querySelector('.aba-mobile-grafico')?.classList.remove('active')
   }
-  
-  mostrarGrafico(){
-    this.abaTabela = false;
-    this.abaGrafico = true;
+
+  mostrarGrafico() {
+    this.abaTabela = false
+    this.abaGrafico = true
     document.querySelector('.aba-mobile-tabela')?.classList.remove('active')
     document.querySelector('.aba-mobile-grafico')?.classList.add('active')
   }
@@ -51,44 +31,8 @@ export class TerapiasComponent implements OnInit {
   converterMoeda(valor: any, locale = 'pt-BR', currency = 'BRL') {
     return new Intl.NumberFormat(locale, {
       style: 'currency',
-      currency
+      currency,
     }).format(valor)
-  }
-
-  campoBusca(event: any){
-    this.valorBusca = event.target.value;   
-    this.filtroGeral();
-  }
-
-  filtroTerapia(event: any){
-    this.nomeTerapia = event.target.value;      
-    this.filtroGeral();
-  }
-
-  filtroGeral() {
-    this.listaTerapias = this.arrayTerapias.filter(filtro =>
-      ((filtro.protocolo.includes(this.valorBusca))
-      ||
-      (filtro.n_reembolso.includes(this.valorBusca)))
-      &&
-      this.isNotEmpty(this.nomeTerapia) && this.isNotEmpty(filtro.terapia) &&
-      filtro.terapia.toLowerCase().includes(this.nomeTerapia.toLowerCase())
-    )
-  }
-
-  isNotEmpty(value: any) {
-    return value !== undefined && value !== null;
-  }
-
-  ordenarTerapia(tipo: string) {
-    if (this.ordemTerapias) {
-      if(tipo === 'terapia') this.listaTerapias.sort((a, b) => a.terapia.localeCompare(b.terapia));
-      if(tipo === 'status') this.listaTerapias.sort((a, b) => a.status.localeCompare(b.status));
-    } else {
-      if(tipo === 'terapia') this.listaTerapias.sort((a, b) => b.terapia.localeCompare(a.terapia));
-      if(tipo === 'status') this.listaTerapias.sort((a, b) => b.status.localeCompare(a.status));
-    }
-    this.ordemTerapias = !this.ordemTerapias;
   }
 
   listaTerapias = [
@@ -250,6 +194,32 @@ export class TerapiasComponent implements OnInit {
     },
     {
       terapia: 'Musicoterapia',
+      data_terapia: '02/06/2023',
+      recibo_nf: '0003',
+      valor_pago: 240,
+      data_solicitacao: '01/06/2023',
+      data_pagamento: '16/06/2023',
+      valor_reembolso: 240,
+      protocolo: '32630520230601112867',
+      n_reembolso: '4309889412',
+      status: 'Pendente',
+      acertado: 'Não',
+    },
+    {
+      terapia: 'Fisioterapia',
+      data_terapia: '02/06/2023',
+      recibo_nf: '0003',
+      valor_pago: 240,
+      data_solicitacao: '01/06/2023',
+      data_pagamento: '16/06/2023',
+      valor_reembolso: 240,
+      protocolo: '32630520230601112867',
+      n_reembolso: '4309889412',
+      status: 'Pendente',
+      acertado: 'Não',
+    },
+    {
+      terapia: 'Ecoterapia',
       data_terapia: '02/06/2023',
       recibo_nf: '0003',
       valor_pago: 240,

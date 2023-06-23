@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderModule } from './pages/header/header.module';
 import { FooterModule } from './pages/footer/footer.module';
 import { TerapiasModule } from './pages/terapias/terapias.module';
+import { ModalComponent } from './pages/terapias/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { TerapiasModule } from './pages/terapias/terapias.module';
     FooterModule,
     TerapiasModule
   ],
-  providers: [],
+  providers: [ModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
