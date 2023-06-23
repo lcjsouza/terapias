@@ -1,0 +1,199 @@
+@import '../terapias.component.scss';
+
+.box-filtros {
+  display: flex;
+  flex-direction: column;
+
+  &-pesquisa {
+    @include grid();
+    margin: 3rem 1.4rem 2rem;
+    width: auto;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+
+    .lupa {
+      grid-area: 1/14/1/16;
+      z-index: 1;
+      margin: auto;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .pesquisa {
+      grid-area: 1/1/2/16;
+      box-sizing: border-box;
+      width: 100%;
+      height: 4rem;
+      border: 1px solid rgba(3, 40, 121, 0.7);
+      border-radius: 10px;
+      padding-left: 1rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  &-reembolso {
+    margin: 0rem 1.4rem 2rem;
+    width: auto;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+
+    select {
+      box-sizing: border-box;
+      width: 100%;
+      height: 4rem;
+      border: 1px solid rgba(3, 40, 121, 0.7);
+      border-radius: 10px;
+      padding-left: 1rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+  }
+
+  @include fromMediumLarge {
+    flex-direction: row;
+    align-items: center;
+    margin: 0 2rem 2rem;
+
+    &-pesquisa {
+      width: 30rem;
+      margin: 0;
+
+      .lupa {
+        grid-area: 1/31/1/32;
+      }
+
+      .pesquisa {
+        grid-area: 1/1/2/33;
+      }
+    }
+
+    &-reembolso {
+      width: 30rem;
+      margin: 0 2rem;
+    }
+  }
+}
+
+.box-tabela {
+  @include d-flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+
+  &-info {
+    height: 18rem;
+    background: rgba(196, 196, 196, 0.1);
+    border: 1px solid rgba(3, 40, 121, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+    @include d-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2.5rem 1rem 0;
+    padding: 1.5rem;
+
+    .coluna {
+      width: 12.5rem;
+
+      &-titulo {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        font-weight: 500;
+      }
+
+      &-descricao {
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+        white-space: pre;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &-btn {
+        width: 100%;
+        padding: 0.7rem 0;
+        background: #032879;
+        border-radius: 1rem;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: $color-white;
+        text-align: center;
+      }
+    }
+
+    .coluna:nth-child(3) {
+      margin: 2rem 0;
+    }
+
+    .coluna:nth-child(6) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &-info:first-child {
+    margin: 0 1rem;
+  }
+
+  &-info:last-child {
+    margin: 2.5rem 1rem;
+  }
+}
+
+.tabela-desktop {
+  padding: 0 2rem;
+  border: 1px solid rgba(3, 40, 121, 0.7);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 2rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  text-align: center;
+
+  .tabela-terapias {
+    width: 100%;
+    margin: 3rem 0;
+
+    th {
+      font-weight: 700;
+      cursor: pointer;
+      padding-bottom: 1.5rem;
+
+      &:nth-child(1) {
+        width: 16%;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(6) {
+        width: 16%;
+      }
+
+      &:nth-child(4),
+      &:nth-child(5) {
+        width: 14%;
+      }
+
+      .icon-sort {
+        margin-left: 0.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    tbody tr {
+      border-top: 1px solid rgba(3, 40, 121, 0.7);
+
+      td {
+        font-size: 1.6rem;
+        padding: 1rem 0;
+
+        img {
+          height: 2rem;
+          width: 2rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

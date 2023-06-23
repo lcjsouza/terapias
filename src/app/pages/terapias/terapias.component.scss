@@ -8,25 +8,26 @@
   background-position-x: -7.5rem;
 
   .aba-mobile {
-    grid-area: 1/2/2/16;
+    grid-area: 1/1/2/16;
     display: flex;
     align-items: flex-end;
     font-weight: 500;
     font-size: 1.6rem;
     line-height: 1.9rem;
-    margin-top: 2rem;
+    margin: 2rem 2rem 0;
 
-    .active{
+    .active {
       color: $color-white;
       background: $color-terapia;
     }
 
-    &-tabela, &-grafico {
+    &-tabela,
+    &-grafico {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 8rem;
-      height: 3rem;
+      width: 9rem;
+      height: 4rem;
       border: 1px solid #c0c0c0;
       border-radius: 1rem 1rem 0px 0px;
       color: $color-terapia;
@@ -35,7 +36,7 @@
 
   .box {
     height: 100vh;
-    grid-area: 2/2/29/15;
+    grid-area: 2/1/29/16;
     @include d-flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -43,147 +44,10 @@
     border: 1px solid #c0c0c0;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
     border-radius: 0px 10px 10px 10px;
+    margin: 0 2rem;
 
-    .header-btn {
-      display: flex;
-      justify-content: flex-end;
-      margin: 2rem 1rem 0 0;
-
-      .aba-desktop {
-        display: none;
-      }
-
-      .btn-novo {
-        display: flex;
-        
-        .nova-terapia {
-          background: $color-terapia;
-          border-radius: 1rem;
-          font-weight: 500;
-          font-size: 1.6rem;
-          line-height: 1.9rem;
-          color: $color-white;
-          width: 13rem;
-          padding: 1rem 1.8rem;
-        }
-      }
-    }
-
-    &-filtros {
-      display: flex;
-      flex-direction: column;
-
-      &-pesquisa {
-        @include grid();
-        margin: 3rem 1.4rem 2rem;
-        width: auto;
-        filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-        .lupa {
-          grid-area: 1/14/1/16;
-          z-index: 1;
-          margin: auto;
-          width: 2.4rem;
-          height: 2.4rem;
-        }
-
-        .pesquisa {
-          grid-area: 1/1/2/16;
-          box-sizing: border-box;
-          width: 100%;
-          height: 4rem;
-          border: 1px solid rgba(3, 40, 121, 0.7);
-          border-radius: 10px;
-          padding-left: 1rem;
-          font-size: 1.6rem;
-        }
-      }
-
-      &-reembolso {
-        margin: 0rem 1.4rem 2rem;
-        width: auto;
-        filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
-
-        select {
-          box-sizing: border-box;
-          width: 100%;
-          height: 4rem;
-          border: 1px solid rgba(3, 40, 121, 0.7);
-          border-radius: 10px;
-          padding-left: 1rem;
-          font-size: 1.6rem;
-          cursor: pointer;
-        }
-      }
-    }
-
-    &-tabela {
-      @include d-flex;
-      align-items: center;
-      flex-direction: column;
+    .app-tabela {
       overflow-y: auto;
-
-      &-info {
-        height: 18rem;
-        background: rgba(196, 196, 196, 0.1);
-        border: 1px solid rgba(3, 40, 121, 0.7);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 2rem;
-        @include d-flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 2.5rem 1rem 0;
-        padding: 1.5rem;
-
-        .coluna {
-          width: 12.5rem;
-
-          &-titulo {
-            font-size: 1.2rem;
-            line-height: 1.4rem;
-            font-weight: 500;
-          }
-
-          &-descricao {
-            font-weight: 700;
-            font-size: 1.6rem;
-            line-height: 2.1rem;
-            white-space: pre;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          &-btn {
-            width: 100%;
-            padding: 0.7rem 0;
-            background: #032879;
-            border-radius: 1rem;
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1.9rem;
-            color: $color-white;
-            text-align: center;
-          }
-        }
-
-        .coluna:nth-child(3) {
-          margin: 2rem 0;
-        }
-
-        .coluna:nth-child(6) {
-          display: flex;
-          justify-content: center;
-        }
-      }
-
-      &-info:first-child {
-        margin: 0 1rem;
-      }
-
-      &-info:last-child {
-        margin: 2.5rem 1rem;
-      }
     }
   }
 
@@ -202,20 +66,9 @@
     }
   }
 
-  #modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    grid-area: 1/1/30/16;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-
-    @include fromMediumLarge {
-      grid-area: 1/1/30/33;
-    }
-  }
-
   @include fromMediumLarge {
+    grid-template-rows: repeat(18, 1fr);
+    height: 100vh;
     background-position-x: 0;
 
     .aba-mobile {
@@ -223,150 +76,15 @@
     }
 
     .box {
-      grid-area: 2/2/29/32;
-      margin-top: 3rem;
+      grid-area: 2/2/15/32;
+      margin: 3rem 0 0;
+      padding: 4rem 2rem;
       border-radius: 10px;
-
-      .header-btn {
-        justify-content: space-between;
-        margin: 4rem 4rem;
-
-        .aba-desktop {
-          display: flex;
-          justify-content: space-between;
-          width: 27rem;
-          font-weight: 500;
-          font-size: 2rem;
-          line-height: 2.3rem;
-          text-align: center;
-
-          .active{
-            color: $color-white;
-            background: $color-terapia;
-          }
-
-          &-tabela, &-grafico {
-            color: $color-terapia;
-            background: transparent;
-            border: 1px solid $color-terapia;
-            border-radius: 1rem;
-            padding: 1rem 0;
-            width: 13rem;
-            cursor: pointer;
-
-            &:hover {
-              color: $color-white;
-              background: $color-terapia;
-            }
-          }
-        }
-
-        .btn-novo {
-          cursor: pointer;
-          
-          .nova-terapia {
-            border: 1px solid $color-terapia;
-            background: transparent;
-            color: $color-terapia;
-            text-align: center;
-            font-size: 2rem;
-            line-height: 2.3rem;
-            width: 22rem;
-
-            &:hover{
-              background: $color-terapia;
-              color: $color-white;
-            }
-          }
-
-        }
-      }
-
-      &-filtros {
-        flex-direction: row;
-        align-items: center;
-        margin: 0 4rem 2rem 4rem;
-
-        &-pesquisa {
-          width: 30rem;
-          margin: 0;
-
-          .lupa {
-            grid-area: 1/31/1/32;
-          }
-
-          .pesquisa {
-            grid-area: 1/1/2/33;
-          }
-        }
-
-        &-reembolso {
-          width: 30rem;
-          margin: 0 2rem;
-        }
-      }
-
-      .tabela-desktop {
-        margin: 0 2rem;
-        padding: 0 2rem;
-        border: 1px solid rgba(3, 40, 121, 0.7);
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-        border-radius: 2rem;
-        font-size: 2rem;
-        line-height: 2.3rem;
-        text-align: center;
-
-        .tabela-terapias {
-          width: 100%;
-          margin: 3rem 0;
-
-          th {
-            font-weight: 700;
-            cursor: pointer;
-            padding-bottom: 1.5rem;
-
-            &:nth-child(1) {
-              width: 16%;
-            }
-
-            &:nth-child(2),
-            &:nth-child(3),
-            &:nth-child(6) {
-              width: 16%;
-            }
-
-            &:nth-child(4),
-            &:nth-child(5) {
-              width: 14%;
-            }
-
-            .icon-sort {
-              margin-left: 0.5rem;
-              width: 1.5rem;
-              height: 1.5rem;
-            }
-          }
-
-          tbody tr {
-            border-top: 1px solid rgba(3, 40, 121, 0.7);
-
-            td {
-              font-size: 1.6rem;
-              padding: 1rem 0;
-
-              img {
-                height: 2rem;
-                width: 2rem;
-                cursor: pointer;
-              }
-            }
-          }
-        }
-      }
+      height: max-content;
     }
 
     .footer {
-      grid-area: 29/1/30/33;
+      grid-area: 18/1/18/33;
       height: 7rem;
 
       &-texto {
@@ -376,14 +94,6 @@
       }
     }
   }
-}
-
-#tabela {
-  display: block;
-}
-
-#grafico {
-  display: none;
 }
 
 .color-recebido {
@@ -399,6 +109,87 @@
 .color-liberado {
   color: #ffdb58;
   font-weight: 700;
+}
+
+// ESTILOS DOS BOTÕES NA PARTE SUPERIOR
+.header-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem 1rem 0 0;
+
+  .aba-desktop {
+    display: none;
+  }
+
+  .btn-novo {
+    display: flex;
+
+    .nova-terapia {
+      background: $color-terapia;
+      border-radius: 1rem;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      color: $color-white;
+      width: 13rem;
+      padding: 1rem 1.8rem;
+    }
+  }
+
+  @include fromMediumLarge {
+    justify-content: space-between;
+    margin: 0 2rem 4rem;
+
+    .aba-desktop {
+      display: flex;
+      justify-content: space-between;
+      width: 27rem;
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 2.3rem;
+      text-align: center;
+
+      .active {
+        color: $color-white;
+        background: $color-terapia;
+      }
+
+      &-tabela,
+      &-grafico {
+        color: $color-terapia;
+        background: transparent;
+        border: 1px solid $color-terapia;
+        border-radius: 1rem;
+        padding: 1rem 0;
+        width: 13rem;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-white;
+          background: $color-terapia;
+        }
+      }
+    }
+
+    .btn-novo {
+      cursor: pointer;
+
+      .nova-terapia {
+        border: 1px solid $color-terapia;
+        background: transparent;
+        color: $color-terapia;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 2.3rem;
+        width: 22rem;
+
+        &:hover {
+          background: $color-terapia;
+          color: $color-white;
+        }
+      }
+    }
+  }
 }
 
 /* ESTILO DA PAGINAÇÃO NGX-PAGINATION */

@@ -1,0 +1,148 @@
+
+<div class="app-modal" *ngIf="modalEditar">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="fecharModal()">X</span>
+      <h1 class="titulo">Editar Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <div class="linha-info">
+          <label class="titulo">Terapia</label>
+          <select disabled>
+            <option [value]="terapiaModal.terapia">{{terapiaModal.terapia}}</option>
+          </select>
+        </div>
+        <div class="linha-info linha-px2">
+          <label class="titulo">Status</label>
+          <select>
+            <option hidden [value]="terapiaModal.status">{{terapiaModal.status}}</option>
+            <option value="recebido">Recebido</option>
+            <option value="pendente">Pendente</option>
+            <option value="liberado">Liberado</option>
+            <option value="nao-enviado">Não enviado</option>
+          </select>
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Data da Solicitação</label>
+          <input class="descricao" value="{{terapiaModal.data_solicitacao}}">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info linha-pr2">
+          <label class="titulo">Data da Terapia</label>
+          <input class="descricao " value="{{terapiaModal.data_terapia}}">
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Valor Pago</label>
+          <input id="valor-pago" class="descricao" maxlength="9" value="{{converterValores(terapiaModal.valor_pago)}}" (keyup)="mascaraMoeda($event)" type="text" placeholder="R$ 0,00">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info">
+          <label class="titulo">Nº Recibo/NF</label>
+          <input class="descricao" max="5" type="number" value="{{terapiaModal.recibo_nf}}">
+        </div>
+        <div class="linha-info linha-px2">
+          <label id="valor-reembolso" class="titulo" >Valor do Reembolso</label>
+          <input class="descricao" maxlength="9" value="{{converterValores(terapiaModal.valor_reembolso)}}" (keyup)="mascaraMoeda($event)" placeholder="R$ 0,00" type="text">
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Data do Pagamento</label>
+          <input class="descricao" value="{{terapiaModal.data_pagamento}}">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info linha-pr2">
+          <label class="titulo">Protocolo</label>
+          <input class="descricao" max="20" type="number" value="{{terapiaModal.protocolo}}">
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Nº Reembolso</label>
+          <input class="descricao" max="10" type="number" value="{{terapiaModal.n_reembolso}}">
+        </div>
+      </div>
+      
+      <div class="linha-info">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-modal" *ngIf="modalNovaTerapia">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="fechar" (click)="fecharModal()">X</span>
+      <h1 class="titulo">Nova Terapia</h1>
+    </div>
+    <div class="modal-corpo">
+      <div class="linha">
+        <div class="linha-info">
+          <label class="titulo">Terapia</label>
+          <select>
+            <option value="" selected hidden>Selecione...</option>
+            <option value="fonoaudiologia">Fonoaudiologia</option>
+            <option value="psicopedagogia">Psicopedagogia</option>
+            <option value="psicologia">Psicologia</option>
+            <option value="terapia-ocupacional">Terapia Ocupacional</option>
+            <option value="nutricionista">Nutricionista</option>
+            <option value="musicoterapia">Musicoterapia</option>
+          </select>
+        </div>
+        <div class="linha-info linha-px2">
+          <label class="titulo">Status</label>
+          <select>
+            <option value="" selected hidden>Selecione...</option>
+            <option value="recebido">Recebido</option>
+            <option value="pendente">Pendente</option>
+            <option value="liberado">Liberado</option>
+            <option value="nao-enviado">Não enviado</option>
+          </select>
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Data da Solicitação</label>
+          <input class="descricao" type="date">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info linha-pr2">
+          <label class="titulo">Data da Terapia</label>
+          <input class="descricao " type="date" >
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Valor Pago</label>
+          <input id="valor-pago" class="descricao" maxlength="9" (keyup)="mascaraMoeda($event)" type="text" placeholder="R$ 0,00">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info">
+          <label class="titulo">Nº Recibo/NF</label>
+          <input class="descricao" max="5" type="number" placeholder="00000">
+        </div>
+        <div class="linha-info linha-px2">
+          <label id="valor-reembolso" class="titulo" >Valor do Reembolso</label>
+          <input class="descricao" maxlength="9" (keyup)="mascaraMoeda($event)" placeholder="R$ 0,00" type="text">
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Data do Pagamento</label>
+          <input class="descricao" type="date">
+        </div>
+      </div>
+      <div class="linha">
+        <div class="linha-info linha-pr2">
+          <label class="titulo">Protocolo</label>
+          <input class="descricao" max="20" type="number" placeholder="00000000000000000000">
+        </div>
+        <div class="linha-info">
+          <label class="titulo">Nº Reembolso</label>
+          <input class="descricao" max="10" type="number" placeholder="0000000000">
+        </div>
+      </div>
+      
+      <div class="linha-info">
+        <a class="linha-btn">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>
