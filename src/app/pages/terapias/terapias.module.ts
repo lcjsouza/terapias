@@ -6,6 +6,7 @@ import { ModalModule } from './modal/modal.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { GraficoModule } from './grafico/grafico.module';
 import { TabelaModule } from './tabela/tabela.module';
+import { TerapiaService } from 'src/app/shared/services/terapia.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TabelaModule } from './tabela/tabela.module';
     TabelaModule,
   ],
   declarations: [TerapiasComponent],
-  exports: [TerapiasComponent]
+  exports: [TerapiasComponent],
+  providers: [TerapiaService]
 })
 export class TerapiasModule { }

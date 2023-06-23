@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core'
 import { TerapiasComponent } from '../terapias.component'
 import { ModalComponent } from '../modal/modal.component';
+import { TerapiaService } from 'src/app/shared/services/terapia.service';
 
 @Component({
   selector: 'app-tabela',
@@ -23,16 +24,18 @@ export class TabelaComponent implements OnInit {
   contador: number = 10
   maxSize: number = 5
 
-  constructor(private terapiaComponent: TerapiasComponent, private modalComponent: ModalComponent) {}
+  constructor(private terapiaComponent: TerapiasComponent, private terapiaService: TerapiaService) {}
 
   ngOnInit() {
-    this.arrayTerapias = this.terapiaComponent.listaTerapias;
-    this.arrayFiltroTerapias = this.terapiaComponent.listaTerapias
-    this.terapiaComponent.listaTerapias.forEach((x) => {
-      if(!this.listaNomeTerapia.find((y) => y == x.terapia)) {
-        this.listaNomeTerapia.push(x.terapia);
-      }
-    })   
+    this.terapiaService.getListaTerapias().subscribe((response) => {
+      this.arrayTerapias = response;
+      this.arrayFiltroTerapias = response;
+      response.forEach((x: any) => {
+        if(!this.listaNomeTerapia.find((y) => y == x.terapia)) {
+          this.listaNomeTerapia.push(x.terapia);
+        }
+      })
+    })
 
     this.tamanhoDisplay >= 992
       ? (this.tabelaDesktop = true)
